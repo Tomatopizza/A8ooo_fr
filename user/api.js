@@ -1,5 +1,3 @@
-const backend_base_url = "http://127.0.0.1:8000";
-const frontend_base_url = "http://127.0.0.1:5500";
 
 async function handleRegister() {
     const registerData = {
@@ -10,7 +8,7 @@ async function handleRegister() {
         // fullname: document.getElementById("floatingInputFullname").value,
     };
 
-    const response = await fetch(`${backend_base_url}/users/`, {
+    const response = await fetch(`${back_base_url}/users/`, {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json"
@@ -22,7 +20,7 @@ async function handleRegister() {
     response_json = await response.json();
 
     if (response.status == 200) {
-        window.location.replace(`${frontend_base_url}/A8ooo_front/login.html`); // 로그인 페이지
+        window.location.replace(`${front_base_url}/A8ooo_front/login.html`); // 로그인 페이지
     } else {
         alert(response.status); // "회원정보가 일치하지 않습니다."
     }
@@ -35,7 +33,7 @@ async function handleLogin() {
     };
 
     // fetch post 통신이 완료될때까지 기다리고, api에서 토큰을 반환합니다.
-    const response = await fetch(`${backend_base_url}/users/api/token/`, {
+    const response = await fetch(`${back_base_url}/users/api/token/`, {
         headers: {
             Accept: "application/json",
             "Content-Type": "application/json"
@@ -66,7 +64,7 @@ async function handleLogin() {
 
         // payload 저장
         localStorage.setItem("payload", jsonPayload);
-        window.location.replace(`${frontend_base_url}/`);
+        window.location.replace(`${front_base_url}/`);
     } else {
         alert(response.status); // "회원정보가 일치하지 않습니다."
     }

@@ -1,5 +1,4 @@
-const backend_base_url = "http://127.0.0.1:8000"
-const frontend_base_url = "http://127.0.0.1:5500"
+
 
 console.log("h2")
 //로그인
@@ -7,7 +6,7 @@ async function Login() {
     const username = document.getElementById("username").value;
     const password = document.getElementById("password").value;
 
-    const response = await fetch(`${backend_base_url}/users/dj-rest-auth/login/`, {
+    const response = await fetch(`${back_base_url}/users/dj-rest-auth/login/`, {
         headers: {
             'content-type': 'application/json'
         },

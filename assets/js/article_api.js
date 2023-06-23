@@ -1,5 +1,5 @@
-// const backend_base_url = "http://127.0.0.1:8000"
-// const frontend_base_url = "http://127.0.0.1:5500"
+// const back_base_url = "http://127.0.0.1:8000"
+// const front_base_url = "http://127.0.0.1:5500"
 
 console.log("article.api js")
 
@@ -18,7 +18,7 @@ window.onload = async function () {
 
 // ========== index.js의 back url 연결: 유저가 작성한 모든 게시글 가져오기 ========================
 async function loadArticle() {
-    const response = await fetch(`${backend_base_url}/articles/my000/`, {
+    const response = await fetch(`${back_base_url}/articles/my000/`, {
         headers: {
             'Authorization': 'Bearer ' + localStorage.getItem("access")
         },
@@ -187,7 +187,7 @@ async function buildCalendar() {
 
         // ======================= 날짜선택시 운동내역 보기 =============================
         async function choiceDate(newDIV, selected_date_str) {
-            const response = await fetch(`${backend_base_url}/articles/my000/?date=${selected_date_str}`, {
+            const response = await fetch(`${back_base_url}/articles/my000/?date=${selected_date_str}`, {
                 headers: {
                     'Authorization': 'Bearer ' + localStorage.getItem("access"),
                     'Content-Type': 'application/json',
@@ -219,7 +219,7 @@ async function buildCalendar() {
                           <h5 class="card-title">${categoryName}</h5>
                           <h6 class="card-subtitle mb-2 text-muted">${select_day}</h6>
                           <p class="card-text">${checkStatus}</p>
-                          <button type="button" onclick="location.href='${frontend_base_url}/article_detail.html?article_id=${articleId}'">상세보기</button>
+                          <button type="button" onclick="location.href='${front_base_url}/article_detail.html?article_id=${articleId}'">상세보기</button>
                         </div>
                       </div>`;
 
@@ -345,7 +345,7 @@ async function save_article() {
     formData.append("is_private", isPrivate);
     formData.append("exercise_time", exerciseTime);
 
-    const response = await fetch(`${backend_base_url}/articles/my000/`, {
+    const response = await fetch(`${back_base_url}/articles/my000/`, {
         method: "POST",
         headers: {
             Authorization: "Bearer " + token,

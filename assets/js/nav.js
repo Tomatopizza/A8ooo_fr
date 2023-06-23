@@ -17,7 +17,7 @@ $(document).ready(function () {
             const payload_parse = JSON.parse(payload);
             intro.innerText = `${payload_parse.username}님 안녕하세요`;
             intro.setAttribute('style', 'color: black;')
-            intro.href = `${frontend_base_url}/profile2.html`
+            intro.href = `${front_base_url}/profile2.html`
 
 
             let navbarRight = document.getElementById("navbar-right");

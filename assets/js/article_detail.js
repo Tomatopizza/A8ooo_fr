@@ -27,7 +27,7 @@ async function loadArticles(articleId) {
 
   if (response.image) {
     newImage.setAttribute("width", "100%");
-    newImage.setAttribute("src", `${backend_base_url}${response.image}`);
+    newImage.setAttribute("src", `${back_base_url}${response.image}`);
   } else {
     newImage.setAttribute("width", "100%");
     newImage.setAttribute("src", "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2022/04/exerciseHowOften-944015592-770x533-1-650x428.jpg");
@@ -40,7 +40,7 @@ async function loadArticles(articleId) {
   const likeButton = document.getElementById("likes");
   const likeCount = document.getElementById("like_count");
 
-  const likeResponse = await fetch(`${backend_base_url}/articles/${articleId}/like_article/`, { // 게시글 좋아요 상태와 좋아요 수 가져오기
+  const likeResponse = await fetch(`${back_base_url}/articles/${articleId}/like_article/`, { // 게시글 좋아요 상태와 좋아요 수 가져오기
     method: 'GET',
     headers: {
       'content-type': 'application/json',
@@ -58,7 +58,7 @@ async function loadArticles(articleId) {
 
   // let token = localStorage.getItem("access");
 
-  const currentUser = await fetch(`${backend_base_url}/users/dj-rest-auth/user`, {
+  const currentUser = await fetch(`${back_base_url}/users/dj-rest-auth/user`, {
     method: 'GET',
     headers: {
       'content-type': 'application/json',
@@ -88,7 +88,7 @@ async function loadComments(articleId) {
   // 댓글 edit기능을 위한 유저 식별
   let token = localStorage.getItem("access");
 
-  const currentUser = await fetch(`${backend_base_url}/users/dj-rest-auth/user`, {
+  const currentUser = await fetch(`${back_base_url}/users/dj-rest-auth/user`, {
     method: 'GET',
     headers: {
       'content-type': 'application/json',
@@ -211,7 +211,7 @@ async function articleLike() {
   const likeButton = document.getElementById("likes");
   const likeCount = document.getElementById("like_count");
 
-  const response = await fetch(`${backend_base_url}/articles/${articleId}/like_article/`, { // 게시글 좋아요/좋아요취소 요청
+  const response = await fetch(`${back_base_url}/articles/${articleId}/like_article/`, { // 게시글 좋아요/좋아요취소 요청
     method: 'POST',
     headers: {
       'content-type': 'application/json',
@@ -249,7 +249,7 @@ async function articleDelete() {
 
   const confirmDelete = confirm("댓글을 삭제 하시겠습니까?");
   if (confirmDelete) {
-    const response = await fetch(`${backend_base_url}/articles/${articleId}/detail/`, {
+    const response = await fetch(`${back_base_url}/articles/${articleId}/detail/`, {
       headers: {
         'Authorization': `Bearer ${token}`
       },

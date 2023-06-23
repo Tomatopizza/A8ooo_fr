@@ -1,5 +1,4 @@
-// const backend_base_url = "http://127.0.0.1:8000"
-// const frontend_base_url = "http://127.0.0.1:5500"
+
 
 function setCookie(cookie_name, value, minutes) {
   const exdate = new Date();
@@ -100,7 +99,7 @@ window.onload = async function loadMainPage() {
       var position = await getPosition()
       var latitude = position.coords['latitude']
       var longitude = position.coords['longitude']
-      const response = await fetch('http://localhost:8000/articles/weather/',{ // 백엔드로 위치 정보 전달
+      const response = await fetch(`${back_base_url}/articles/weather/`,{ // 백엔드로 위치 정보 전달
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

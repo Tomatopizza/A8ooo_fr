@@ -27,7 +27,7 @@ window.onload = async function loadArticles() {
     articleImage.setAttribute("class", "card-img")  // img
 
     if(article.image) {
-      articleImage.setAttribute("src", `${backend_base_url}${article.image}`)
+      articleImage.setAttribute("src", `${back_base_url}${article.image}`)
     }else{
       articleImage.setAttribute("src", "https://health.clevelandclinic.org/wp-content/uploads/sites/3/2022/04/exerciseHowOften-944015592-770x533-1-650x428.jpg")
     }
