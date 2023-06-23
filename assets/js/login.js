@@ -1,5 +1,4 @@
-const backend_base_url = "http://3.36.66.102/"
-const frontend_base_url = "https://tomatopizza.github.io/"
+
 
 console.log("h2")
 //로그인
