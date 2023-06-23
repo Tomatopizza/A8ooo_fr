@@ -100,7 +100,7 @@ window.onload = async function loadMainPage() {
       var position = await getPosition()
       var latitude = position.coords['latitude']
       var longitude = position.coords['longitude']
-      const response = await fetch('http://3.36.66.102//articles/weather/',{ // 백엔드로 위치 정보 전달
+      const response = await fetch('http://3.36.66.102/articles/weather/',{ // 백엔드로 위치 정보 전달
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
