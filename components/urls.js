@@ -1,3 +1,2 @@
-const back_base_url = "http://127.0.0.1:8000"
-
-const front_base_url = "http://127.0.0.1:5500"
+const back_base_url = "http://3.36.66.102/"
+const front_base_url = "https://tomatopizza.github.io/"
