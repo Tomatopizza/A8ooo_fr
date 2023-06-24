@@ -1,5 +1,3 @@
-
-
 async function handleRegister() {
     const registerData = {
         // 등록에 필요한 정보입니다
@@ -20,8 +18,8 @@ async function handleRegister() {
 
     response_json = await response.json();
 
-    if (response.status == 200) {
-        window.location.replace(`${frontend_base_url}/A8ooo_front/login.html`); // 로그인 페이지
+    if (response.status == 201) {
+        window.location.replace(`${frontend_base_url}/template/user_login.html`); // 로그인 페이지
     } else {
         alert(response.status); // "회원정보가 일치하지 않습니다."
     }
@@ -65,7 +63,7 @@ async function handleLogin() {
 
         // payload 저장
         localStorage.setItem("payload", jsonPayload);
-        window.location.replace(`${frontend_base_url}/`);
+        window.location.replace(`${frontend_base_url}/template/index.html`);
     } else {
         alert(response.status); // "회원정보가 일치하지 않습니다."
     }

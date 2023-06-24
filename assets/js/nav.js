@@ -1,6 +1,3 @@
-const backend_base_url = "http://3.36.66.102/"
-const frontend_base_url = "https://tomatopizza.github.io/"
-
 
 $(document).ready(function () {
     // 상단 네비 html을 붙여주는 함수
