@@ -108,36 +108,6 @@ function card(template, weather) {
 	}
 }
 
-// async function excercise() {
-// 	const response = await fetch(`${backend_base_url}/articles/my000/`, {
-// 		headers: {
-// 			Authorization: "Bearer " + localStorage.getItem("access"),
-// 		},
-// 		method: "GET",
-// 	});
-
-// 	if (response.status == 200) {
-// 		const response_json = await response.json();
-// 		console.log(response_json);
-
-// 		if (response_json.length > 0) {
-// 			const checkCount1 = response_json[0].check_status_count;
-// 			console.log(checkCount1);
-
-// 			let checkArticle = document.getElementById("check-article");
-
-// 			let animation_content = `
-// 							<lottie-player src="https://assets1.lottiefiles.com/packages/lf20_q1c2x59v.json"
-// 							background="transparent"
-// 							style="width: 50px; height: 50px; margin:auto;"
-// 							speed="5"
-// 							loop
-// 							autoplay></lottie-player>`;
-// 			document.getElementById("animation").innerHTML = animation_content;
-// 			console.log(animation_content);
-// 		}
-// 	}
-// }
 
 async function cardRunningCount(value) {
 	const response = await fetch(`${backend_base_url}/articles/my000/`, {
@@ -206,7 +176,7 @@ function cardFail(template) {
 
 window.onload = async function loadMainPage() {
 	buildCalendar();
-	if (getCookie("success_or_fail") == null) {
+	if (getCookie("time") == null) {
 		var position = await success_fail(position); // -1일 경우 위치정보 수집 거부.
 		var latitude;
 		var longitude;

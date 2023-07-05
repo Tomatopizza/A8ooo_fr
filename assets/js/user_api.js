@@ -50,12 +50,12 @@ async function handleLogin() {
 		// access,refresh 토큰 저장
 		// response_json으로 불러오면 { 'email' : ~~, 'password' : ~~, 'toekn' : {'rfresh': ~~ , 'access' : ~~}} 이런식으로 불러와짐.
 		// 그래서 일단 token만 불러온다음에 필요없는 부분을 제거한 뒤 access와 refresh에 넣어줌. 바로 딕셔너리로는 인식시키는 법을 몰라서 택함.
-    var token = response_json.tokens;
-    console.log(token.access);
-    var refresh = token.refresh;
-    var access = token.access;
-    localStorage.setItem("access", access);
-    localStorage.setItem("refresh", refresh);
+		var token = response_json.tokens;
+		console.log(token.access);
+		var refresh = token.refresh;
+		var access = token.access;
+		localStorage.setItem("access", access);
+		localStorage.setItem("refresh", refresh);
 
 		const base64Url = access.split(".")[1];
 		const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -84,4 +84,41 @@ async function handleLogout() {
 	localStorage.removeItem("payload");
 	alert("로그아웃완료");
 	location.reload();
+}
+
+async function passwordResetEmail() {
+	const loginData = {
+		email: document.getElementById("emailFind").value, // 이 부분이 email로 변화
+	};
+	const response = await fetch(
+		`${backend_base_url}/users/request-reset-email/`,
+		{
+			headers: {
+				Accept: "application/json",
+				"Content-Type": "application/json",
+			},
+			method: "POST",
+			body: JSON.stringify(loginData),
+		}
+	);
+}
+
+async function passwordResetConfirm() {
+	var url = window.location;
+	console.log(url);
+	var token = new URLSearchParams(url.search).get("token");
+	var uidb64 = new URLSearchParams(url.search).get("uidb64");
+	const passwordResetData = {
+		password: document.getElementById("passwordConfirm").value, // 이 부분이 email로 변화
+		token: token,
+		uidb64: uidb64,
+	};
+	const response = await fetch(`${backend_base_url}/users/password-reset/`, {
+		headers: {
+			Accept: "application/json",
+			"Content-Type": "application/json",
+		},
+		method: "PATCH",
+		body: JSON.stringify(passwordResetData),
+	});
 }
